@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>La Marejada</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:"Segoe UI",sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      overflow-x:hidden;
+      background:#000;
+      color:white;
+    }
+
+    /* Fondo */
+    .background{
+      position:fixed;
+      inset:0;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,0.15),
+          rgba(0,0,0,0.45)
+        ),
+        url("marejada.png");
+
+      background-size:cover;
+      background-position:center;
+      background-repeat:no-repeat;
+
+      transform:scale(1.03);
+      z-index:0;
+    }
+
+    /* Overlay */
+    .overlay{
+      position:relative;
+      z-index:2;
+
+      width:100%;
+      min-height:100vh;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+
+      padding:40px 40px 90px 40px;
+
+      backdrop-filter:blur(3px);
+    }
+
+    /* Encabezado */
+    .hero{
+      text-align:center;
+      margin-bottom:70px;
+
+      animation:fadeUp 1s ease;
+    }
+
+    .hero h1{
+
+      font-size:5rem;
+      font-weight:600;
+
+      letter-spacing:12px;
+
+      text-transform:uppercase;
+
+      color:white;
+
+      text-shadow:
+        0 3px 12px rgba(0,0,0,0.7),
+        0 10px 35px rgba(0,0,0,0.55);
+
+    }
+
+    .hero p{
+
+      margin-top:18px;
+
+      font-size:1rem;
+      font-weight:500;
+
+      letter-spacing:5px;
+
+      color:rgba(255,255,255,0.88);
+
+      text-shadow:
+        0 2px 10px rgba(0,0,0,0.7);
+
+    }
+
+    /* Tarjetas */
+.cards{
+
+  display:flex;
+  gap:35px;
+
+  flex-wrap:wrap;
+  justify-content:center;
+
+  animation:fadeUp 1.2s ease;
+
+}
+
+.card{
+
+  width:330px;
+  height:210px;
+
+  border-radius:30px;
+
+  text-decoration:none;
+  color:white;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18,45,58,0.52),
+      rgba(28,72,92,0.42)
+    );
+
+  border:1px solid rgba(255,255,255,0.14);
+
+  backdrop-filter:blur(18px);
+
+  box-shadow:
+    0 15px 45px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    border 0.35s ease;
+
+}
+
+.card:hover{
+
+  transform:translateY(-10px);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(24,62,80,0.92),
+      rgba(38,95,122,0.78)
+    );
+
+  border:1px solid rgba(255,255,255,0.24);
+
+}
+
+/* Iconos */
+.icon{
+
+  font-size:3.6rem;
+
+  margin-bottom:22px;
+
+  filter:drop-shadow(0 5px 15px rgba(0,0,0,0.45));
+
+}
+
+    /* Títulos */
+    .card h2{
+
+      font-size:1.6rem;
+
+      font-weight:600;
+
+      margin-bottom:12px;
+
+      letter-spacing:1px;
+
+      text-shadow:
+        0 2px 8px rgba(0,0,0,0.7);
+
+    }
+
+    /* Subtexto */
+    .card span{
+
+      font-size:0.96rem;
+
+      font-weight:500;
+
+      color:rgba(255,255,255,0.84);
+
+      letter-spacing:1px;
+
+      text-shadow:
+        0 2px 8px rgba(0,0,0,0.8);
+
+    }
+
+    /* Footer */
+    .footer{
+
+      position:absolute;
+      bottom:24px;
+
+      font-size:0.82rem;
+      font-weight:500;
+
+      letter-spacing:3px;
+
+      color:rgba(255,255,255,0.72);
+
+      text-shadow:
+        0 2px 10px rgba(0,0,0,0.8);
+
+    }
+
+    /* Animaciones */
+    @keyframes fadeUp{
+
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+
+    }
+
+    /* Responsive */
+    @media(max-width:700px){
+
+      body{
+        overflow-y:auto;
+      }
+
+      .overlay{
+        justify-content:flex-start;
+
+        padding-top:80px;
+        padding-bottom:120px;
+      }
+
+      .hero{
+        margin-bottom:45px;
+      }
+
+      .hero h1{
+        font-size:3rem;
+        letter-spacing:6px;
+      }
+
+      .hero p{
+        font-size:0.85rem;
+        letter-spacing:3px;
+      }
+
+      .cards{
+        width:100%;
+        gap:22px;
+      }
+
+      .card{
+        width:100%;
+        max-width:360px;
+        min-height:180px;
+      }
+
+      .footer{
+
+        position:relative;
+
+        margin-top:40px;
+
+        bottom:auto;
+
+        text-align:center;
+
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="background"></div>
+
+  <div class="overlay">
+
+    <div class="hero">
+
+      <h1>LA MAREJADA</h1>
+
+      <p>ACCESO PRIVADO</p>
+
+    </div>
+
+    <div class="cards">
+
+      <!-- VIDEOVIGILANCIA -->
+      <a class="card"
+         href="https://camaras.tudominio.es">
+
+        <div class="icon">📹</div>
+
+        <h2>Videovigilancia</h2>
+
+        <span>Supervisión en tiempo real</span>
+
+      </a>
+
+      <!-- DOMÓTICA -->
+      <a class="card"
+         href="https://homeassistant.tudominio.es">
+
+        <div class="icon">🏡</div>
+
+        <h2>Domótica</h2>
+
+        <span>Control inteligente del hogar</span>
+
+      </a>
+
+    </div>
+
+    <div class="footer">
+      LA MAREJADA · SISTEMA SEGURO
+    </div>
+
+  </div>
+
+</body>
+</html>
