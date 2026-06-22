@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centro de Mando</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Inter,sans-serif;
+background:#f5f7fa;
+padding:30px;
+color:#1f2937;
+}
+
+.container{
+max-width:1400px;
+margin:auto;
+}
+
+header{
+text-align:center;
+margin-bottom:40px;
+}
+
+header h1{
+font-size:1rem;
+letter-spacing:5px;
+color:#6b7280;
+margin-bottom:10px;
+}
+
+.time{
+font-size:5rem;
+font-weight:700;
+}
+
+.date{
+margin-top:10px;
+color:#6b7280;
+}
+
+.weather{
+margin-top:10px;
+color:#2563eb;
+font-weight:500;
+}
+
+.search{
+margin-bottom:40px;
+}
+
+.search input{
+width:100%;
+padding:18px 25px;
+border:none;
+border-radius:30px;
+font-size:1rem;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:28px;
+padding:30px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.card h2{
+margin-bottom:20px;
+}
+
+.work{
+border-left:8px solid #2563eb;
+}
+
+.ai{
+border-left:8px solid #9333ea;
+}
+
+.server{
+border-left:8px solid #16a34a;
+}
+
+.personal{
+border-left:8px solid #f59e0b;
+}
+
+.agenda{
+border-left:8px solid #ef4444;
+}
+
+.link{
+display:block;
+text-decoration:none;
+padding:14px;
+border-radius:18px;
+color:#111827;
+margin-bottom:10px;
+transition:.3s;
+}
+
+.link:hover{
+background:#eef2ff;
+}
+
+.subtitle{
+font-size:.85rem;
+color:#6b7280;
+}
+
+@media(max-width:700px){
+
+body{
+padding:15px;
+}
+
+.time{
+font-size:3.5rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+<h1>CENTRO DE MANDO</h1>
+
+<div class="time" id="hora"></div>
+
+<div class="date" id="fecha"></div>
+
+<div class="weather">
+☀️ Villaviciosa
+</div>
+
+</header>
+
+<form class="search" action="https://www.google.com/search">
+<input
+name="q"
+placeholder="Buscar en Google..."
+>
+</form>
+
+<div class="grid">
+
+<section class="card work">
+
+<h2>👨‍🏫 Trabajo</h2>
+
+<a class="link" href="https://outlook.office.com">
+Outlook
+<div class="subtitle">Correo electrónico</div>
+</a>
+
+<a class="link" href="https://teams.microsoft.com">
+Teams
+<div class="subtitle">Comunicación</div>
+</a>
+
+<a class="link" href="https://www.educastur.es">
+Educastur
+<div class="subtitle">Portal educativo</div>
+</a>
+
+<a class="link" href="https://sauce.asturias.es">
+SAUCE
+<div class="subtitle">Gestión académica</div>
+</a>
+
+<a class="link" href="https://profesorado.asturias.es">
+Área del Profesorado
+<div class="subtitle">Recursos docentes</div>
+</a>
+
+<a class="link" href="https://keep.google.com">
+Google Keep
+<div class="subtitle">Notas</div>
+</a>
+
+</section>
+
+
+<section class="card ai">
+
+<h2>🤖 IA</h2>
+
+<a class="link" href="https://chatgpt.com">
+ChatGPT
+<div class="subtitle">Asistente IA</div>
+</a>
+
+<a class="link" href="https://claude.ai">
+Claude
+<div class="subtitle">Anthropic</div>
+</a>
+
+<a class="link" href="https://gemini.google.com">
+Gemini
+<div class="subtitle">Google AI</div>
+</a>
+
+</section>
+
+
+<section class="card server">
+
+<h2>🏠 Home Server</h2>
+
+<a class="link" href="https://casa.lamarejada.es">
+Home Assistant
+<div class="subtitle">Domótica</div>
+</a>
+
+<a class="link" href="https://vistas.lamarejada.es">
+AgentDVR
+<div class="subtitle">Videovigilancia</div>
+</a>
+
+<a class="link" href="https://fotos.lamarejada.es">
+Immich
+<div class="subtitle">Fotos y vídeos</div>
+</a>
+
+<a class="link" href="https://nube.lamarejada.es">
+Nextcloud
+<div class="subtitle">Nube privada</div>
+</a>
+
+</section>
+
+
+<section class="card personal">
+
+<h2>⭐ Personal</h2>
+
+<a class="link" href="https://mail.google.com">
+Gmail
+<div class="subtitle">Correo personal</div>
+</a>
+
+<a class="link" href="https://www.amazon.es">
+Amazon
+<div class="subtitle">Compras</div>
+</a>
+
+<a class="link" href="https://www.pinterest.es">
+Pinterest
+<div class="subtitle">Inspiración</div>
+</a>
+
+<a class="link" href="https://photos.google.com">
+Google Fotos
+<div class="subtitle">Recuerdos</div>
+</a>
+
+</section>
+
+
+<section class="card agenda">
+
+<h2>📅 Agenda</h2>
+
+<div class="subtitle">
+Próximamente...
+</div>
+
+</section>
+
+</div>
+
+</div>
+
+<script>
+
+function actualizarHora(){
+
+const ahora = new Date();
+
+document.getElementById("hora").innerHTML =
+ahora.toLocaleTimeString(
+'es-ES',
+{
+hour:'2-digit',
+minute:'2-digit'
+}
+);
+
+document.getElementById("fecha").innerHTML =
+ahora.toLocaleDateString(
+'es-ES',
+{
+weekday:'long',
+year:'numeric',
+month:'long',
+day:'numeric'
+}
+);
+
+}
+
+actualizarHora();
+
+setInterval(actualizarHora,1000);
+
+</script>
+
+</body>
+</html>
