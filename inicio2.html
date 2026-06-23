@@ -39,7 +39,7 @@ header h1{
 font-size:1rem;
 letter-spacing:5px;
 color:#6b7280;
-margin-bottom:10px;
+margin-bottom:4px;
 }
 
 .time{
@@ -111,10 +111,10 @@ border-left:8px solid #ef4444;
 .link{
 display:block;
 text-decoration:none;
-padding:14px;
+padding:8px 14px;
 border-radius:18px;
 color:#111827;
-margin-bottom:10px;
+margin-bottom:4px;
 transition:.3s;
 }
 
@@ -122,10 +122,7 @@ transition:.3s;
 background:#eef2ff;
 }
 
-.subtitle{
-font-size:.85rem;
-color:#6b7280;
-}
+
 
 @media(max-width:700px){
 
@@ -140,6 +137,11 @@ font-size:3.5rem;
 }
 
 </style>
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/icalendar@6.1.19/index.global.min.js"></script>
+
 </head>
 
 <body>
@@ -173,57 +175,30 @@ placeholder="Buscar en Google..."
 
 <h2>👨‍🏫 Trabajo</h2>
 
-<a class="link" href="https://outlook.office.com">
-Outlook
-<div class="subtitle">Correo electrónico</div>
-</a>
+<a class="link" href="#" title="Correo electrónico">📧 Outlook</a>
 
-<a class="link" href="https://teams.microsoft.com">
-Teams
-<div class="subtitle">Comunicación</div>
-</a>
+<a class="link" href="#" title="Comunicación">💬 Teams</a>
 
-<a class="link" href="https://www.educastur.es">
-Educastur
-<div class="subtitle">Portal educativo</div>
-</a>
+<a class="link" href="#" title="Portal educativo">🎓 Educastur</a>
 
-<a class="link" href="https://sauce.asturias.es">
-SAUCE
-<div class="subtitle">Gestión académica</div>
-</a>
+<a class="link" href="#" title="Gestión académica">📚 SAUCE</a>
 
-<a class="link" href="https://profesorado.asturias.es">
-Área del Profesorado
-<div class="subtitle">Recursos docentes</div>
-</a>
-
-<a class="link" href="https://keep.google.com">
-Google Keep
-<div class="subtitle">Notas</div>
-</a>
+<a class="link" href="#" title="Recursos docentes">👨‍🏫 Área del Profesorado</a>
 
 </section>
 
 
 <section class="card ai">
 
-<h2>🤖 IA</h2>
+<h2>🤖 IA y herramientas</h2>
 
-<a class="link" href="https://chatgpt.com">
-ChatGPT
-<div class="subtitle">Asistente IA</div>
-</a>
+<a class="link" href="https://chatgpt.com" title="Asistente IA">🤖 ChatGPT</a>
 
-<a class="link" href="https://claude.ai">
-Claude
-<div class="subtitle">Anthropic</div>
-</a>
+<a class="link" href="#" title="Anthropic">🧠 Claude</a>
 
-<a class="link" href="https://gemini.google.com">
-Gemini
-<div class="subtitle">Google AI</div>
-</a>
+<a class="link" href="#" title="Google AI">✨ Gemini</a>
+
+<a class="link" href="#" title="Notas">📝 Google Keep</a>
 
 </section>
 
@@ -232,25 +207,13 @@ Gemini
 
 <h2>🏠 Home Server</h2>
 
-<a class="link" href="https://casa.lamarejada.es">
-Home Assistant
-<div class="subtitle">Domótica</div>
-</a>
+<a class="link" href="#" title="Domótica">🏡 Home Assistant</a>
 
-<a class="link" href="https://vistas.lamarejada.es">
-AgentDVR
-<div class="subtitle">Videovigilancia</div>
-</a>
+<a class="link" href="#" title="Videovigilancia">📹 AgentDVR</a>
 
-<a class="link" href="https://fotos.lamarejada.es">
-Immich
-<div class="subtitle">Fotos y vídeos</div>
-</a>
+<a class="link" href="#" title="Fotos y vídeos">📷 Immich</a>
 
-<a class="link" href="https://nube.lamarejada.es">
-Nextcloud
-<div class="subtitle">Nube privada</div>
-</a>
+<a class="link" href="#" title="Nube privada">☁️ Nextcloud</a>
 
 </section>
 
@@ -259,25 +222,13 @@ Nextcloud
 
 <h2>⭐ Personal</h2>
 
-<a class="link" href="https://mail.google.com">
-Gmail
-<div class="subtitle">Correo personal</div>
-</a>
+<a class="link" href="#" title="Correo personal">📬 Gmail</a>
 
-<a class="link" href="https://www.amazon.es">
-Amazon
-<div class="subtitle">Compras</div>
-</a>
+<a class="link" href="#" title="Compras">🛒 Amazon</a>
 
-<a class="link" href="https://www.pinterest.es">
-Pinterest
-<div class="subtitle">Inspiración</div>
-</a>
+<a class="link" href="#" title="Inspiración">📌 Pinterest</a>
 
-<a class="link" href="https://photos.google.com">
-Google Fotos
-<div class="subtitle">Recuerdos</div>
-</a>
+<a class="link" href="#" title="Recuerdos">🖼️ Google Fotos</a>
 
 </section>
 
@@ -286,9 +237,7 @@ Google Fotos
 
 <h2>📅 Agenda</h2>
 
-<div class="subtitle">
-Próximamente...
-</div>
+<div id="calendar"></div>
 
 </section>
 
@@ -328,6 +277,36 @@ actualizarHora();
 
 setInterval(actualizarHora,1000);
 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+const calendarEl = document.getElementById('calendar');
+
+const calendar = new FullCalendar.Calendar(calendarEl, {
+initialView:'listWeek',
+height:'auto',
+locale:'es',
+headerToolbar:false,
+events:[
+{
+title:'Prueba FullCalendar',
+start:'2026-06-23T10:00:00',
+color:'#2563eb'
+}
+],
+eventSources:[
+{
+url:'https://calendar.google.com/calendar/ical/d81f6feaa9c3013be2b5bfd29bb7fde75ec1b961f75f2a3c355ce35f2766b37e%40group.calendar.google.com/public/basic.ics',
+format:'ics',
+color:'#16a34a'
+}
+]
+});
+
+calendar.render();
+
+});
 </script>
 
 </body>
